@@ -1,18 +1,26 @@
 const clinics = [
-  { id: 1, name: "Austin Dental Clinic", city: "Austin", type: "Dental", contact: "austin@clinic.com" },
-  { id: 2, name: "Chicago Health Center", city: "Chicago", type: "Medical", contact: "chicago@clinic.com" },
+  { id: 1, name: "Austin Dental Clinic", city: "Austin", type: "Dental", offers: "Externships + Jobs", contact: "austin@clinic.com" },
+  { id: 2, name: "Chicago Health Center", city: "Chicago", type: "Medical", offers: "Externships", contact: "chicago@clinic.com" },
+  { id: 3, name: "Phoenix Smile Care", city: "Phoenix", type: "Dental", offers: "Jobs", contact: "phoenix@clinic.com" },
+  { id: 4, name: "Dallas Med Group", city: "Dallas", type: "Medical", offers: "Externships + Jobs", contact: "dallas@clinic.com" },
 ];
-
 export default function Clinics() {
   return (
-    <div className="p-10">
-      <h1 className="text-3xl font-bold mb-6">Partner Clinics</h1>
-      <ul className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div className="wrap">
+      <div className="row between">
+        <h1>Partner Clinics</h1>
+        <span className="badge">Total: {clinics.length}</span>
+      </div>
+      <ul className="grid">
         {clinics.map((c) => (
-          <li key={c.id} className="bg-white shadow-md p-6 rounded-2xl">
-            <h2 className="text-xl font-semibold">{c.name}</h2>
-            <p>{c.type} – {c.city}</p>
+          <li key={c.id} className="card">
+            <h2>{c.name}</h2>
+            <p>{c.type} • {c.city}</p>
+            <p>Offers: {c.offers}</p>
             <p>Contact: {c.contact}</p>
+            <div className="row">
+              <button className="btn primary">Select / Contact</button>
+            </div>
           </li>
         ))}
       </ul>
